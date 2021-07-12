@@ -22,8 +22,8 @@ export default function Weather(props) {
         }, [props.zipCode])
        
   const [forecastInfo, setForecastInfo] = useState({
-    main: "-",
-    description: "-",
+    main: "Day1",
+    description: "Day2",
     temp: 0,
   })
 
