@@ -1,47 +1,58 @@
-import React,{useState} from "react";
-import { StyleSheet,View, Text,ImageBackground } from "react-native";
-import Forecast from "./Forcast";
+import React,{useEffect,useState} from 'react'
+import {ImageBackground, Text, StyleSheet, View} from 'react-native'
+import Forecast from './Forecast';
 
 export default function Weather(props) {
     useEffect(() => {
-             console.log(`fetching data with zipCode = ${props.zipCode}`)
-             if (props.zipCode) {
-                 fetch(`http://api.openweathermap.org/data/2.5/weather?q=${props.zipCode},th&units=metric&APPID=b2f6f04ce14c9290bd101689fa9541e3`)
-                   .then((response) => response.json())
-                   .then((json) => {
-                       setForecastInfo({
-                            main: json.weather[0].main,
-                            description: json.weather[0].description,
-                            temp: json.main.temp
-                        });
-                   })
-                   .catch((error) => {
-                          console.warn(error);
-                  });
-            }
-        }, [props.zipCode])
-       
-  const [forecastInfo, setForecastInfo] = useState({
-    main: "Day1",
-    description: "Day2",
-    temp: 0,
-  })
+        console.log(`fetching data with zipCode = ${props.zipCode}`)
+        if (props.zipCode) {
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${props.zipCode},th&units=metric&appid=fd68c0f2039c5a25f666a9ff374bc93e`)
+            .then((response) => response.json())
+            .then((json) => {
+                setForecastInfo({
+                    main: json.weather[0].main,
+                    description: json.weather[0].description,
+                    temp: json.main.temp});
+                })
+            .catch((error) => {
+                console.warn(error);
+            });
+        }
+    }, [props.zipCode])
 
-  return (
-    
-      <ImageBackground source={require("../bg.jpg")} style={styles.backdrop}>
-        <Text>Zip Code</Text>
-        <Text>{props.zipCode}</Text>
-        <Forecast {...forecastInfo} />
-      </ImageBackground>
-    
-  )
-}
+    const [forecastInfo,setForecastInfo] = useState({
+        main: 'main',
+        description: 'description',
+        temp: 0
+    })
 
-const styles = StyleSheet.create({
-  backdrop: {
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
-  }
-})
+    return (
+        //แปลงข้อมูลทั้งหมดเป็น props ให้ Forecast.js
+        <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
+            <View style={styles.BBlack}>
+                <Text style={styles.BText}>Zip Code</Text>
+                <Text style={styles.BText}>{props.zipCode}</Text>
+                <Forecast {...forecastInfo}/> 
+            </View>
+        </ImageBackground>
+    );
+   }
+
+
+   const styles = StyleSheet.create({    //กำหนด backdrop style 
+        backdrop: {
+            flexDirection: 'column',
+            width: '100%',
+            height:'100%'
+        },
+        BText: {
+            fontSize: 40
+        },
+        BBlack:{
+            justifyContent: 'center', //center แนวแกนตั้ง
+            alignItems: 'center', //center แนวแกนนอน
+            backgroundColor: 'rgba(0,0,0,0.3)',
+            height:'50%',
+            width:'100%'
+        }
+   })
