@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 export default function Forecast(props) {
     return (
     <View>
-        <Text>{props.main}</Text>
+        <Text style={styles.BText}>{props.main}</Text>
         <Text>{props.description}</Text>
         <View styles={styles.Row}> 
             <Text>{props.temp}</Text>
@@ -18,5 +18,9 @@ const styles = StyleSheet.create({
     Row:{
         alignItems: 'center',
         flexDirection: 'row',
+    },
+    BText: {
+        fontSize: 30    //กำหนดขนาดClouds
     }
 })   
+

@@ -27,10 +27,10 @@ export default function Weather(props) {
     })
 
     return (
-        //แปลงข้อมูลทั้งหมดเป็น props ให้ Forecast.js
-        <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
+        //แปลงข้อมูลเป็น props ให้ Forecast.js ทั้งหมด
+        <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}> 
             <View style={styles.BBlack}>
-                <Text style={styles.BText}>Zip Code</Text>
+                <Text style={styles.BText}>Zip Code</Text> 
                 <Text style={styles.BText}>{props.zipCode}</Text>
                 <Forecast {...forecastInfo}/> 
             </View>
@@ -38,19 +38,18 @@ export default function Weather(props) {
     );
    }
 
-
    const styles = StyleSheet.create({    //กำหนด backdrop style 
         backdrop: {
             flexDirection: 'column',
-            width: '100%',
-            height:'100%'
+            width: '150%', //ใช้ภาพช่วง 150% 
+            height:'100%'  //ใช้ขนาดรูปในแนวตั้ง
         },
         BText: {
-            fontSize: 40
+            fontSize: 50    //กำหนดขนาด
         },
         BBlack:{
-            justifyContent: 'center', //center แนวแกนตั้ง
-            alignItems: 'center', //center แนวแกนนอน
+            justifyContent: 'center', //กำหนดcenterเป็นแนวแกนตั้ง
+            alignItems: 'center',     //กำหนดcenterเป็นแนวแกนนอน
             backgroundColor: 'rgba(0,0,0,0.3)',
             height:'50%',
             width:'100%'
