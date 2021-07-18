@@ -7,8 +7,10 @@ export default function Forecast(props) {
         <Text>{props.main}</Text>
         <Text>{props.description}</Text>
         <View styles={styles.Row}> 
-            <Text>{props.temp} °C</Text>
-            <Text>{props.pressure} Pa</Text>
+            <Text>อุณหภูมิ {props.temp} °C</Text>
+            <Text>แรงดันอากาศ {props.pressure} Pa</Text>
+            <Text>ความเร็วลม {props.windspeed} m/s</Text>
+            <Text>พิกัดแสงอาทิตย์ {props.syssunset} </Text>
         </View>
     </View>
 

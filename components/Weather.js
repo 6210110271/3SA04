@@ -13,7 +13,9 @@ export default function Weather(props) {
                     main: json.weather[0].main,
                     description: json.weather[0].description,
                     temp: json.main.temp,
-                    pressure: json.main.pressure
+                    pressure: json.main.pressure,
+                    windspeed: json.wind.speed,
+                    syssunset: json.sys.sunset
                 });
             })
             .catch((error) => {
@@ -44,7 +46,7 @@ export default function Weather(props) {
    const styles = StyleSheet.create({    //กำหนด backdrop style 
         backdrop: {
             flexDirection: 'column',
-            width: '100%', //ใช้ภาพช่วง 150% 
+            width: '100%', //ใช้ภาพช่วง 100% 
             height:'100%'  //ใช้ขนาดรูปในแนวตั้ง
         },
         BText: {
