@@ -36,16 +36,16 @@ export default function ZipCodeScreen(){
 }
 
 const styles = StyleSheet.create({
-      zipItem: {
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'space-evenly'
-      },
-      zipPlace: {
-          flex: 1,
-      },
-      zipCode: {
-          flex: 1,
-      }
-      
-   })
+    zipItem: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
+    },
+    zipPlace: {
+        flex: 1,
+    },
+    zipCode: {
+        flex: 1,
+    }
+    
+ })
